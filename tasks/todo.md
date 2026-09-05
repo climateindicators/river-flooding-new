@@ -1,5 +1,32 @@
 # build-indicator skill
 
+## Comparison page on the site
+
+`climateindicators.us/indicators/river-flooding-new.qmd` plus
+`R/river-flooding-new.R`, sidebar entry added to `_quarto.yml`. Built only from
+this repo's `narrative.qmd` and `meta.yml`, as if river flooding were a new
+indicator with no existing chart code, so the two pages can be read side by side.
+
+`REPO <- "river-flooding"`: the site's CLAUDE.md forbids holding data locally,
+and this repo's CSVs are byte-identical to the published ones, so pointing at
+the published repository is the same bytes, not a shortcut.
+
+Three things the new page does that the old one does not:
+
+1. **Figure prose is EPA's caption verbatim**, straight from `narrative.qmd`.
+   The old page has hand-written explanation in its place.
+2. **The significance caveat is rendered from `meta.yml`'s `note` field**
+   rather than retyped into the page, so it stays tied to the dataset.
+3. **Off-map station counts are computed** (`offmap_summary()`), not written
+   into the prose. They came out 8/15/1 and 7/11/1, matching the old page's
+   hand-verified "Eight Alaska, fifteen Hawaii, and one Puerto Rico".
+
+The chart maps increase to the palette's blue and decrease to its warmest slot,
+which is the reverse of `R/river-flooding.R`. That is the caption flag doing its
+job: EPA's caption says blue means floods grew, so a page carrying that caption
+verbatim has to draw it that way. No hex codes; both come from
+`INDICATOR_PALETTE`.
+
 ## Run: river-flooding, built into this repo
 
 `build_indicator.R <url> . --force`, then the four skill steps. `--force` was
