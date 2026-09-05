@@ -1,0 +1,78 @@
+indicator:
+  name: River Flooding
+  slug: river-flooding
+  publisher: U.S. Environmental Protection Agency
+  source_page: https://19january2025snapshot.epa.gov/climate-indicators/climate-change-indicators-river-flooding/index.html
+  technical_documentation: https://19january2025snapshot.epa.gov/sites/default/files/2021-03/documents/river-flooding_tech-doc.pdf
+  rights: Public domain, work of the U.S. Government (17 U.S.C. 105)
+datasets:
+- file: river_flooding_magnitude.csv
+  figure: Figure 1
+  figure_title: Figure 1. Change in the Magnitude of River Flooding in the United
+    States, 1965–2015
+  source_file: river-flooding_fig-1.csv
+  source_sha256: c19a41a55ac761d096e2fe9f61673ab22a5142bbcf250073e106204912f056cc
+  source_encoding: windows-1252
+  data_source: Slater and Villarini, 2016
+  web_update: August 2016
+  unit: tau value
+  rows: 526
+  columns:
+  - name: latitude
+    type: number
+    description: Stream gauge station latitude, decimal degrees. Verbatim from the
+      source file.
+  - name: longitude
+    type: number
+    description: Stream gauge station longitude, decimal degrees. Verbatim from the
+      source file.
+  - name: measure
+    type: string
+    description: What the `value` column measures.
+  - name: unit
+    type: string
+    description: Unit of `value`, taken from the source file's own Units line.
+  - name: value
+    type: number
+    description: Mann-Kendall tau statistic for the trend in the station's annual
+      maximum discharge. Positive means floods have become larger. Verbatim from the
+      source file.
+  note: EPA's published figure distinguishes statistically significant stations (larger,
+    solid-color symbols) from non-significant ones (smaller, outlined symbols). That
+    classification is not present in this source file, only the trend value itself,
+    so it cannot be reconstructed here without re-running EPA's own significance test.
+- file: river_flooding_frequency.csv
+  figure: Figure 2
+  figure_title: Figure 2. Change in the Frequency of River Flooding in the United
+    States, 1965–2015
+  source_file: river-flooding_fig-2.csv
+  source_sha256: 00dc47b17bb4af9963e7548420bb1670d7e07097560c59d972d0b0cb3f476827
+  source_encoding: windows-1252
+  data_source: Slater and Villarini, 2016
+  web_update: August 2016
+  unit: slope value
+  rows: 481
+  columns:
+  - name: latitude
+    type: number
+    description: Stream gauge station latitude, decimal degrees. Verbatim from the
+      source file.
+  - name: longitude
+    type: number
+    description: Stream gauge station longitude, decimal degrees. Verbatim from the
+      source file.
+  - name: measure
+    type: string
+    description: What the `value` column measures.
+  - name: unit
+    type: string
+    description: Unit of `value`, taken from the source file's own Units line.
+  - name: value
+    type: number
+    description: Poisson regression slope for the trend in the station's count of
+      peaks-over-threshold flood events. Positive means floods have become more frequent.
+      Verbatim from the source file.
+  note: EPA's published figure distinguishes statistically significant stations (larger,
+    solid-color symbols) from non-significant ones (smaller, outlined symbols). That
+    classification is not present in this source file, only the trend value itself,
+    so it cannot be reconstructed here without re-running EPA's own significance test.
